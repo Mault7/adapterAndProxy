@@ -1,12 +1,23 @@
+import AdapterClasess.*;
+import Proxy.Postman;
+import Proxy.ProxyPostman;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		ProxyImage Postman = new ProxyImage("test_10mb.jpg");
-
+		Query adapterQuery = new AdapterQuery("job");
+		String myToken = "123";
 		
-		Postman.makeRequest("124");
+		//Adapt consult
+		String query = adapterQuery.get();
+		
+		//Create ProxyPostman
+		Postman proxyPostman = new ProxyPostman(query);
+		//validate ProxyPostman
+		String result = proxyPostman.makeRequest(myToken);
+		System.out.println(result);
+		
 	}
 
 }
